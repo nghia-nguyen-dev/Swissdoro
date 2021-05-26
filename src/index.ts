@@ -5,7 +5,7 @@ const BREAK = 5;
 
 let state = {
 	time: STUDY * SECONDS,
-    break: BREAK * SECONDS,
+	break: BREAK * SECONDS,
 	count: 0,
 	mode: "timer",
 };
@@ -18,13 +18,13 @@ const Timer = state => `<h1>${getMinutes(state.time)}</h1>`;
 const Counter = state =>
 	`<h3 class="Counter circle circle--fill">${state.count}</h3>`;
 
-const Controls = () => {
+const Controls = state => {
 	return `
         <div class="Controls">
-            <button class="circle circle--outline-blue">
-                <h3>start</h3>
+            <button class="Controls__btn circle circle--outline-blue start-btn">
+                <h3 class="start-btn__text">start</h3>
             </button>
-            <button class="circle circle--outline-blue">
+            <button class="Controls__btn circle circle--outline-blue">
                 <h3>break</h3>
             </button>
         </div>
@@ -35,7 +35,7 @@ const UI = state => {
 	return `
         <div class="UI">
             ${Counter(state)}
-            ${Controls()}
+            ${Controls(state)}
         </div>
     `;
 };
@@ -60,3 +60,19 @@ const updateState = newState => {
 };
 
 render(state);
+
+const toggleText = textContent => {
+	return textContent === "start" ? "stop" : "start";
+};
+
+const startBtn = document.querySelector(".start-btn");
+const startBtnText = document.querySelector(".start-btn__text");
+
+startBtn.onclick = function () {
+	// startBtnText?.textContent = toggleText(startBtnText?.textContent);
+
+	setInterval(() => {
+		updateState({ time: state.time - 1 });
+		console.log(state.time);
+	}, 1000);
+};

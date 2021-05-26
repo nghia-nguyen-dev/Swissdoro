@@ -2,7 +2,7 @@
 @import "./fonts.css";
 
 :root {
-	--dark-blk: #1c1c1c;
+	--dark-blk: hsl(0, 0%, 12%);
 	--cool-white: #e5e8f5;
 	--blue: #0000ef;
 }
@@ -42,6 +42,10 @@ h1 {
 	gap: 20px;
 }
 
+.Controls__btn:hover {
+	cursor: pointer;
+}
+
 .circle {
 	width: 118px;
 	height: 118px;
@@ -54,7 +58,6 @@ h1 {
 }
 
 .circle:hover {
-    cursor: pointer;
     background-color: var(--blue);
 }
 
