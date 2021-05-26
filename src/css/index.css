@@ -1,6 +1,45 @@
 @import "./reset.css";
 @import "./fonts.css";
 
+:root {
+	--bg-dark: #1c1c1c;
+	--dark: #050505;
+	--txt-color: #fcf8fa;
+}
+
 body {
-    font-family: "Neue Haas Text";
+	font-family: "Neue Haas Text";
+}
+
+.App {
+	padding: 30px;
+	background-color: var(--bg-dark);
+	height: 100vh;
+	display: grid;
+	grid-template-columns: max-content auto;
+}
+
+h1 {
+	font-size: 635px;
+	line-height: 465px;
+	letter-spacing: -20px;
+}
+
+.circle {
+	width: 118px;
+	height: 118px;
+	border-radius: 100%;
+	color: var(--txt-color);
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.circle--outline {
+	border: 1px solid #5c5759;
+}
+
+.circle--fill {
+	background-color: var(--dark);
 }
