@@ -1,35 +1,32 @@
 import { merge, pipe, compose } from "ramda";
+const SECONDS = 60;
+const STUDY = 25;
+const BREAK = 5;
 
 let state = {
-	time: {
-        min: 25,
-        sec: 60
-    },
+	time: STUDY * SECONDS,
+    break: BREAK * SECONDS,
 	count: 0,
-	darkMode: true,
+	mode: "timer",
 };
 
-const Timer = time => `<h1>${time}</h1>`;
+const getMinutes = time => Math.floor(time / 60);
+const getSeconds = time => time % 60;
 
-const Counter = count => {
-	return `
-         <svg width="118px" height="118px" viewBox="0 0 118 118" version="1.1">
-            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                 <circle id="circle" stroke="#0000EF" cx="59" cy="59" r="58.5"></circle>
-             </g>
-        </svg>
-    `;
-};
+const Timer = state => `<h1>${getMinutes(state.time)}</h1>`;
+
+const Counter = state =>
+	`<h3 class="Counter circle circle--fill">${state.count}</h3>`;
 
 const Controls = () => {
 	return `
         <div class="Controls">
-            <div class="Counter circle circle--outline-blue">
+            <button class="circle circle--outline-blue">
                 <h3>start</h3>
-            </div>
-            <div class="Counter circle circle--outline-blue">
+            </button>
+            <button class="circle circle--outline-blue">
                 <h3>break</h3>
-            </div>
+            </button>
         </div>
     `;
 };
@@ -37,7 +34,7 @@ const Controls = () => {
 const UI = state => {
 	return `
         <div class="UI">
-            ${Counter(state.count)}
+            ${Counter(state)}
             ${Controls()}
         </div>
     `;
@@ -46,7 +43,7 @@ const UI = state => {
 const App = state => {
 	return `
         <div class="App">
-            ${Timer(state.time.min)}
+            ${Timer(state)}
             ${UI(state)}
         </div>
     `;

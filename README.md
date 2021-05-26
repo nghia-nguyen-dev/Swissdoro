@@ -1,3 +1,3 @@
-# TS-parcel-template
+# Swissdoro
 
-template for future ts projects bundling via parcel
+In progress

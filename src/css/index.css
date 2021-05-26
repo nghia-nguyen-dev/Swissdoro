@@ -53,6 +53,11 @@ h1 {
 	justify-content: center;
 }
 
+.circle:hover {
+    cursor: pointer;
+    background-color: var(--blue);
+}
+
 .circle--outline-blue {
 	border: 1px solid var(--blue);
 }
@@ -65,3 +70,16 @@ h1 {
 	background-color: var(--blue);
 }
 
+.Counter {
+    position: relative;
+}
+
+button {
+    background-color: transparent;
+}
+
+h3 {
+    font-family: "Neue Haas Text";
+    font-size: 20px;
+    color: var(--cool-white);
+}
