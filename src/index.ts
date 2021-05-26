@@ -1,7 +1,10 @@
 import { merge, pipe, compose } from "ramda";
 
 let state = {
-	time: 25,
+	time: {
+        min: 25,
+        sec: 60
+    },
 	count: 0,
 	darkMode: true,
 };
@@ -9,17 +12,24 @@ let state = {
 const Timer = time => `<h1>${time}</h1>`;
 
 const Counter = count => {
-    return `
-        <div class="Counter circle circle--fill">
-            <h3>${count}</h3>
-        </div>
+	return `
+         <svg width="118px" height="118px" viewBox="0 0 118 118" version="1.1">
+            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                 <circle id="circle" stroke="#0000EF" cx="59" cy="59" r="58.5"></circle>
+             </g>
+        </svg>
     `;
 };
 
 const Controls = () => {
 	return `
         <div class="Controls">
-      
+            <div class="Counter circle circle--outline-blue">
+                <h3>start</h3>
+            </div>
+            <div class="Counter circle circle--outline-blue">
+                <h3>break</h3>
+            </div>
         </div>
     `;
 };
@@ -36,7 +46,7 @@ const UI = state => {
 const App = state => {
 	return `
         <div class="App">
-            ${Timer(state.time)}
+            ${Timer(state.time.min)}
             ${UI(state)}
         </div>
     `;

@@ -2,9 +2,9 @@
 @import "./fonts.css";
 
 :root {
-	--bg-dark: #1c1c1c;
-	--dark: #050505;
-	--txt-color: #fcf8fa;
+	--dark-blk: #1c1c1c;
+	--cool-white: #e5e8f5;
+	--blue: #0000ef;
 }
 
 body {
@@ -13,7 +13,7 @@ body {
 
 .App {
 	padding: 30px;
-	background-color: var(--bg-dark);
+	background-color: var(--dark-blk);
 	height: 100vh;
 	display: grid;
 	grid-template-columns: max-content auto;
@@ -21,25 +21,47 @@ body {
 
 h1 {
 	font-size: 635px;
-	line-height: 465px;
+	line-height: 438px;
+	height: 453px;
 	letter-spacing: -20px;
+	color: var(--blue);
+	opacity: 0.85;
+}
+
+.UI {
+    width: max-content;
+    justify-self: flex-end;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.Controls {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
 }
 
 .circle {
 	width: 118px;
 	height: 118px;
 	border-radius: 100%;
-	color: var(--txt-color);
+	color: var(--cool-white);
 
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 
-.circle--outline {
-	border: 1px solid #5c5759;
+.circle--outline-blue {
+	border: 1px solid var(--blue);
+}
+
+.circle--outline-white {
+	border: 1px solid var(--cool-white);
 }
 
 .circle--fill {
-	background-color: var(--dark);
+	background-color: var(--blue);
 }
+
