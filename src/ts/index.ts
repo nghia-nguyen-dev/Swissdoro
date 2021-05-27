@@ -63,6 +63,6 @@ startBtn?.addEventListener("click", handleClick);
 breakBtn?.addEventListener("click", startBreak);
 
 const updateState = (newState: NewState) => {
-	state = merge(state, newState);
+	state = merge(state, newState) as State;
 	render(state);
 };

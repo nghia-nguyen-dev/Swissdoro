@@ -29,11 +29,11 @@ h1 {
 }
 
 .ui {
-    width: max-content;
-    justify-self: flex-end;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+	width: max-content;
+	justify-self: flex-end;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
 
 .controls {
@@ -58,7 +58,7 @@ h1 {
 }
 
 .circle:hover {
-    background-color: var(--blue);
+	background-color: var(--blue);
 }
 
 .circle--outline-blue {
@@ -74,21 +74,21 @@ h1 {
 }
 
 .counter {
-    position: relative;
+	position: relative;
 }
 
 button {
-    background-color: transparent;
+	background-color: transparent;
 }
 
 h3 {
-    font-family: "Neue Haas Text";
-    font-size: 20px;
-    color: var(--cool-white);
+	font-family: "Neue Haas Text";
+	font-size: 20px;
+	color: var(--cool-white);
 }
 
 .break-btn:disabled,
 .start-btn:disabled {
-	opacity: .5;
+	opacity: 0.5;
 	pointer-events: none;
 }
