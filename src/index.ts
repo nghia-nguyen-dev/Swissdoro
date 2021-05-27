@@ -1,4 +1,4 @@
-import { merge, pipe, compose } from "ramda";
+import { merge } from "ramda";
 
 const timer = document.querySelector(".timer");
 const counter = document.querySelector(".counter");
@@ -32,12 +32,12 @@ const reset = () => {
 const startCountDown = () => {
 	console.log(`start studying`);
 
-	if (state.time <= 0) updateState({ time: STUDY * SECONDS, timerHasStarted: true });
+	if (state.time <= 0)
+		updateState({ time: STUDY * SECONDS, timerHasStarted: true });
 
 	intervalId = setInterval(() => {
 		if (state.time <= 0) return reset();
 		updateState({ time: state.time - 1, timerHasStarted: true });
-		console.log(state.time);
 	}, 1000);
 };
 
@@ -56,7 +56,6 @@ const startBreak = () => {
 			return;
 		}
 		updateState({ time: state.time - 1 });
-		console.log(state.time);
 	}, 1000);
 };
 
@@ -80,17 +79,10 @@ const renderTitleTime = state =>
 		state.time
 	)}`);
 
-// const renderBreakBtn = state =>
-// 	(breakBtn.disabled = state.timerHasStarted || state.time ? true : false);
-
 const renderBreakBtn = state => {
-	console.log(state.timerHasStarted);
-
-	if(state.timerHasStarted) breakBtn.disabled = true;
-	if(state.time <= 0) breakBtn.disabled = false;
-
-	// (breakBtn.disabled = state.timerHasStarted ? true : false);
-}
+	if (state.timerHasStarted) breakBtn.disabled = true;
+	if (state.time <= 0) breakBtn.disabled = false;
+};
 
 const getMinutes = time =>
 	Math.floor(time / 60) < 10
