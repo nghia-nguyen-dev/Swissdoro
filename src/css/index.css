@@ -2,7 +2,7 @@
 @import "./fonts.css";
 
 :root {
-	--dark-blk: hsl(0, 0%, 12%);
+	--dark-blk: hsl(0, 0%, 11%);
 	--cool-white: #e5e8f5;
 	--blue: #0000ef;
 }
@@ -85,4 +85,10 @@ h3 {
     font-family: "Neue Haas Text";
     font-size: 20px;
     color: var(--cool-white);
+}
+
+.break-btn:disabled,
+.start-btn:disabled {
+	opacity: .5;
+	pointer-events: none;
 }
