@@ -1,6 +1,7 @@
 import { merge } from "ramda";
 import { SECONDS, STUDY, BREAK, START } from "./constants";
 import { startBtnText, startBtn, breakBtn } from "./domRefs";
+import { NewState, State } from "./interfaces";
 import { render } from "./renders";
 
 let intervalId: number;
@@ -61,8 +62,7 @@ const handleClick = () =>
 startBtn?.addEventListener("click", handleClick);
 breakBtn?.addEventListener("click", startBreak);
 
-const updateState = (newState) => {
+const updateState = (newState: NewState) => {
 	state = merge(state, newState);
 	render(state);
 };
-

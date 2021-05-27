@@ -1,2 +1,6 @@
-export const getMinutes = time => Math.floor(time / 60) < 10 ? "0" + String(Math.floor(time / 60)): Math.floor(time / 60);
-export const getSeconds = time => time % 60 < 10 ? "0" + String(time % 60) : time % 60;
+export const getMinutes = (time:number) =>
+	Math.floor(time / 60) < 10
+		? "0" + String(Math.floor(time / 60))
+		: String(Math.floor(time / 60));
+
+export const getSeconds = (time:number) => time % 60 < 10 ? "0" + String(time % 60) : String(time % 60);
