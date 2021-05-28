@@ -3,6 +3,8 @@ import { SECONDS, STUDY, BREAK, START } from "./constants";
 import { startBtnText, startBtn, breakBtn } from "./domRefs";
 import { NewState, State } from "./interfaces";
 import { render } from "./renders";
+import playAudio from "./playAudio";
+import sheesh from "../assets/sheesh.mp3";
 
 let intervalId: number;
 
@@ -14,6 +16,7 @@ let state = {
 };
 
 const reset = () => {
+	playAudio(sheesh);
 	updateState({
 		count: state.count + 1,
 		timerHasStarted: false,
@@ -24,8 +27,7 @@ const reset = () => {
 const startCountDown = () => {
 	console.log(`Start studying bro!`);
 
-	if (state.time <= 0)
-		updateState({ time: STUDY * SECONDS, timerHasStarted: true });
+	if (state.time <= 0) updateState({ time: STUDY * SECONDS });
 
 	intervalId = setInterval(() => {
 		if (state.time <= 0) return reset();
@@ -45,6 +47,7 @@ const startBreak = () => {
 		if (state.time <= 0) {
 			updateState({ timerHasStarted: false, takeBreak: false });
 			clearInterval(intervalId);
+			playAudio(sheesh);
 			return;
 		}
 		updateState({ time: state.time - 1 });
