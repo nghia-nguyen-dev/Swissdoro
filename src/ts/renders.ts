@@ -1,4 +1,4 @@
-import { breakBtn, startBtn, startBtnText, timer, counter } from "./domRefs";
+import { breakBtn, startBtn, btnLabel, timer, counter } from "./domRefs";
 import { STOP, START } from "./constants";
 import { getMinutes, getSeconds } from "./utils";
 import { State } from "./interfaces";
@@ -10,7 +10,7 @@ export const renderBreakBtn = (state: State) => {
 
 export const renderStartBtn = (state: State) => {
 	startBtn.disabled = state.takeBreak ? true : false;
-	startBtnText.textContent = state.timerHasStarted ? STOP : START;
+	btnLabel.textContent = state.timerHasStarted ? STOP : START;
 };
 
 export const renderTime = (state:State) => (timer.textContent = getMinutes(state.time));

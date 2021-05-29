@@ -1,6 +1,6 @@
 import { merge } from "ramda";
 import { SECONDS, STUDY, BREAK, START } from "./constants";
-import { startBtnText, startBtn, breakBtn } from "./domRefs";
+import { btnLabel, startBtn, breakBtn } from "./domRefs";
 import { NewState, State } from "./interfaces";
 import { render } from "./renders";
 import playAudio from "./playAudio";
@@ -24,18 +24,22 @@ const reset = () => {
 	clearInterval(intervalId);
 };
 
-const startCountDown = () => {
-	console.log(`Start studying bro!`);
+const setTimer = (time: number) => updateState({ time: time });
 
-	if (state.time <= 0) updateState({ time: STUDY * SECONDS });
-
+const decrementTime = () => {
 	intervalId = setInterval(() => {
 		if (state.time <= 0) return reset();
 		updateState({ time: state.time - 1, timerHasStarted: true });
 	}, 1000);
 };
 
-const startBreak = () => {
+const startCountDown = () => {
+	console.log(`Start studying bro!`);
+	if (state.time <= 0) setTimer(STUDY * SECONDS);
+	decrementTime();
+};
+
+const handleBreakClick = () => {
 	console.log(`Take a break my guy!`);
 	updateState({
 		time: BREAK * SECONDS,
@@ -59,13 +63,13 @@ const stopCountDown = () => {
 	updateState({ timerHasStarted: false });
 };
 
-const handleClick = () =>
-	startBtnText?.textContent === START ? startCountDown() : stopCountDown();
-
-startBtn?.addEventListener("click", handleClick);
-breakBtn?.addEventListener("click", startBreak);
+const handleStartClick = () =>
+	btnLabel?.textContent === START ? startCountDown() : stopCountDown();
 
 const updateState = (newState: NewState) => {
 	state = merge(state, newState) as State;
 	render(state);
 };
+
+startBtn?.addEventListener("click", handleStartClick);
+breakBtn?.addEventListener("click", handleBreakClick);
