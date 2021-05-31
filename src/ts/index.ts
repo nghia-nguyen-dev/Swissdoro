@@ -15,13 +15,17 @@ let state = {
 	takeBreak: false,
 };
 
-const reset = () => {
-	playAudio(sheesh);
+const incrementCounter = (amount: number) => {
 	updateState({
-		count: state.count + 1,
+		count: state.count + amount,
 		timerHasStarted: false,
 	});
+};
+
+const reset = () => {
 	clearInterval(intervalId);
+	playAudio(sheesh);
+	incrementCounter(1);
 };
 
 const setTimer = (time: number) => updateState({ time: time });
@@ -39,13 +43,17 @@ const startCountDown = () => {
 	decrementTime();
 };
 
-const handleBreakClick = () => {
-	console.log(`Take a break my guy!`);
+const setBreakTimer = (time: number) => {
 	updateState({
-		time: BREAK * SECONDS,
+		time: time,
 		timerHasStarted: true,
 		takeBreak: true,
 	});
+};
+
+const handleBreakClick = () => {
+	console.log(`Take a break my guy!`);
+	setBreakTimer(BREAK * SECONDS);
 
 	intervalId = setInterval(() => {
 		if (state.time <= 0) {
