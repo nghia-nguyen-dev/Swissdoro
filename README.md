@@ -10,11 +10,9 @@ Before I was using a pomodoro timer to study but it did not have a feature to ta
 -   Play sound when time is up
 -   Tally to keep track of rounds completed
 
-## TO ADD(maybe)
+## TODO
 
--   Update weather icon
--   Retry button to start up Geolocation API???
--   responsive down to mobile view
+-  Add a timer ring??
 
 ## Goals
 
